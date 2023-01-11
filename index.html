@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 1</title>
+    <!-- Add fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <!-- Load tw css, add custom tokens -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        main: "#F05D23",
+                        sec: "#145C9E",
+                    },
+                },
+                fontFamily: {
+                    pop: ["Poppins"],
+                    bot: ["Roboto"],
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="flex-auto bg-gray-50">
+    <!-- Page header -->
+    <div class="bg-white border-b-2 drop-shadow-sm">
+        <h1 class="font-pop text-2xl p-4">BankWorkShop</h1>
+    </div>
+
+    <!-- Page content -->
+    <div class="container max-w-3xl mx-auto mt-10">
+        <!-- Finances section -->
+        <div class="flex-col">
+            <h1 class="font-pop text-main text-2xl text-center">Finances</h1>
+
+            <!-- Card container -->
+            <div class="mt-4 grid grid-cols-2 space-x-4">
+                <!-- Bank card -->
+                <div class="bg-white rounded drop-shadow">
+                    <h1 class="font-pop text-xl mt-3 mx-3">Bank</h1>
+
+                    <!-- Balance -->
+                    <div class="flex flex-row mx-5 justify-between items-end">
+                        <p class="font-bot text-gray-400 font-light">Balance</p>
+                        <div class="mx-1 mb-1 flex-grow border-t border-dashed border-gray-200"></div>
+                        <p class="font-bot text-green-700 font-light text-2xl">0.00€</p>
+                    </div>
+
+                    <div class="mx-3 my-4 flex-grow border-t border-dotted border-gray-300"></div>
+
+                    <!-- Buttons -->
+                    <div class="flex m-3">
+                        <button
+                            class="hover:opacity-70 select-none rounded-md border border-main text-bot font-bold py-1 px-3 bg-white drop-shadow text-main">
+                            Request a loan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Work card -->
+                <div class="bg-white rounded drop-shadow">
+                    <h1 class="font-pop text-xl mt-3 mx-3">Work</h1>
+
+                    <!-- Salary -->
+                    <div class="flex flex-row mx-5 justify-between items-end">
+                        <p class="font-bot text-gray-400 font-light">Unpaid salary</p>
+                        <div class="mx-1 mb-1 flex-grow border-t border-dashed border-gray-200"></div>
+                        <p class="font-bot text-green-700 font-light text-2xl">0.00€</p>
+                    </div>
+
+                    <div class="mx-3 my-4 flex-grow border-t border-dotted border-gray-300"></div>
+
+                    <!-- Buttons -->
+                    <div class="flex m-3 flex-row justify-between">
+                        <button
+                            class="hover:opacity-70 select-none rounded-md border border-main text-bot font-bold py-1 px-3 bg-white drop-shadow text-main">
+                            Bank
+                        </button>
+                        <button
+                            class="hover:opacity-70 select-none rounded-md text-bot font-bold py-1 px-3 bg-main drop-shadow text-white">
+                            Work
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-10 flex-grow border-t border-dotted border-gray-300"></div>
+
+        <!-- Shop section  -->
+        <div class="flex-col">
+            <h1 class="font-pop text-sec text-2xl text-center">Shop</h1>
+
+            <!-- Shop card -->
+            <div class="mt-6 bg-white drop-shadow rounded">
+
+                <!-- Product selection -->
+                <div class="grid grid-cols-2 space-x-6 p-4">
+
+                    <div>
+                        <p class="font-bot text-gray-400 font-light">Select a product</p>
+                        <select id="Example"
+                            class="bg-white mt-2 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-sec focus:border-sec  w-full p-2">
+                            <option selected>Select a value</option>
+                            <option value="item">item</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="font-bot text-gray-400 font-light">Product features</p>
+                        <ul class="m-1">
+                            <li class="text-sm">Feature</li>
+                            <li class="text-sm">Feature 2</li>
+                            <li class="text-sm">Feature 3</li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Single product section -->
+                <div class="bg-sec rounded-b p-4 bg-opacity-50">
+
+                    <p class="text-white">Product</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
