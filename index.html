@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <!-- Icon lib -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     <!-- Load tw css, add custom tokens -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -124,16 +126,44 @@
                             <li class="text-sm">Feature</li>
                             <li class="text-sm">Feature 2</li>
                             <li class="text-sm">Feature 3</li>
-
                         </ul>
                     </div>
 
                 </div>
 
                 <!-- Single product section -->
-                <div class="bg-sec rounded-b p-4 bg-opacity-50">
+                <div class="bg-sec rounded-b p-4 bg-opacity-20 flex">
+                    <div class="flex flex-col basis-96">
+                        <p class="font-bot text-xl text-black">ProductName</p>
+                        <image class="mt-2 rounded-md" alt="Image of the product"
+                            src="https://placekitten.com/g/500/500">
+                        </image>
+                    </div>
+                    <div class="flex flex-col mt-10 mx-3">
 
-                    <p class="text-white">Product</p>
+                        <p class="text-sm flex-1">Information about the selected product.
+                            The text
+                            here
+                            is bit long.
+                            Something
+                            to say about the
+                            product for testing purposes.</p>
+
+
+                        <div class="bg-white rounded-2xl items-center py-1 px-3 my-2">
+                            <h1 class="text-xl text-center">
+                                <iconify-icon
+                                    style="color:#145C9E; font-size:16px; position:absolute; margin-left:-20px; margin-top:10px;"
+                                    icon="icomoon-free:price-tag"></iconify-icon>
+                                10.03€
+                            </h1>
+                        </div>
+
+                        <button
+                            class="hover:opacity-70 select-none rounded-2xl text-bot w-full font-bold py-1 px-3 bg-sec drop-shadow text-white">
+                            Order
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
