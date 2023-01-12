@@ -1,3 +1,7 @@
+#### Hosted on github pages
+
+https://taneli1.github.io/ea_assignment_1/
+
 ## Overview
 
 An assignment for a frontend course. Site contains two sections - finances and shop. The finances section is used to bring up the balance of the user. The balance in the bank can later be used in the shop by purchasing items.
