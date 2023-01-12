@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignment 1</title>
-    <!-- Add fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
     <!-- Icon lib -->
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-    <!-- Load tw css, add custom tokens -->
+    <!-- Tw css + custom tokens -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -43,29 +43,37 @@
     </div>
 
     <!-- Page content -->
-    <div class="container max-w-3xl mx-auto mt-10">
+    <div class="container max-w-3xl mx-auto mt-10 pb-20">
         <!-- Finances section -->
         <div class="flex-col">
             <h1 class="font-pop text-main text-2xl text-center">Finances</h1>
 
             <!-- Card container -->
             <div class="mt-4 grid grid-cols-2 space-x-4">
+
                 <!-- Bank card -->
-                <div class="bg-white rounded drop-shadow">
+                <div id="card-bank" class="bg-white rounded drop-shadow">
                     <h1 class="font-pop text-xl mt-3 mx-3">Bank</h1>
 
                     <!-- Balance -->
                     <div class="flex flex-row mx-5 justify-between items-end">
                         <p class="font-bot text-gray-400 font-light">Balance</p>
                         <div class="mx-1 mb-1 flex-grow border-t border-dashed border-gray-200"></div>
-                        <p class="font-bot text-green-700 font-light text-2xl">0.00€</p>
+                        <p id="card-bank-txt-balance" class="font-bot text-green-700 font-light text-2xl">0.00€</p>
+                    </div>
+
+                    <!-- Loan -->
+                    <div id="card-bank-container-loan" class="hidden flex flex-row mx-5 justify-between items-end">
+                        <p class="font-bot text-gray-400 font-light">Outstanding loan</p>
+                        <div class="mx-1 mb-1 flex-grow border-t border-dashed border-gray-200"></div>
+                        <p id="card-bank-txt-loan" class="font-bot text-orange-700 font-light text-2xl">0.00€</p>
                     </div>
 
                     <div class="mx-3 my-4 flex-grow border-t border-dotted border-gray-300"></div>
 
                     <!-- Buttons -->
                     <div class="flex m-3">
-                        <button
+                        <button id="card-bank-btn-loan"
                             class="hover:opacity-70 select-none rounded-md border border-main text-bot font-bold py-1 px-3 bg-white drop-shadow text-main">
                             Request a loan
                         </button>
@@ -73,25 +81,32 @@
                 </div>
 
                 <!-- Work card -->
-                <div class="bg-white rounded drop-shadow">
+                <div id="card-work" class="bg-white rounded drop-shadow">
                     <h1 class="font-pop text-xl mt-3 mx-3">Work</h1>
 
                     <!-- Salary -->
                     <div class="flex flex-row mx-5 justify-between items-end">
-                        <p class="font-bot text-gray-400 font-light">Unpaid salary</p>
+                        <p class="font-bot text-gray-400 font-light">Earned salary</p>
                         <div class="mx-1 mb-1 flex-grow border-t border-dashed border-gray-200"></div>
-                        <p class="font-bot text-green-700 font-light text-2xl">0.00€</p>
+                        <p id="card-work-txt-balance" class="font-bot text-green-700 font-light text-2xl">0.00€</p>
                     </div>
 
                     <div class="mx-3 my-4 flex-grow border-t border-dotted border-gray-300"></div>
 
                     <!-- Buttons -->
                     <div class="flex m-3 flex-row justify-between">
-                        <button
-                            class="hover:opacity-70 select-none rounded-md border border-main text-bot font-bold py-1 px-3 bg-white drop-shadow text-main">
-                            Bank
-                        </button>
-                        <button
+                        <div>
+
+                            <button id="card-work-btn-bank"
+                                class="hover:opacity-70 select-none rounded-md border border-main text-bot font-bold py-1 px-3 bg-white drop-shadow text-main">
+                                Bank
+                            </button>
+                            <button id="card-work-btn-repay-loan"
+                                class="hidden hover:opacity-70 select-none rounded-md border border-main text-bot font-bold py-1 px-3 bg-white drop-shadow text-main">
+                                Repay loan
+                            </button>
+                        </div>
+                        <button id="card-work-btn-work"
                             class="hover:opacity-70 select-none rounded-md text-bot font-bold py-1 px-3 bg-main drop-shadow text-white">
                             Work
                         </button>
@@ -114,52 +129,40 @@
 
                     <div>
                         <p class="font-bot text-gray-400 font-light">Select a product</p>
-                        <select id="Example"
+                        <select id="product-select"
                             class="bg-white mt-2 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-sec focus:border-sec  w-full p-2">
-                            <option selected>Select a value</option>
-                            <option value="item">item</option>
+                            <option selected>Select a product</option>
                         </select>
                     </div>
                     <div>
                         <p class="font-bot text-gray-400 font-light">Product features</p>
-                        <ul class="m-1">
-                            <li class="text-sm">Feature</li>
-                            <li class="text-sm">Feature 2</li>
-                            <li class="text-sm">Feature 3</li>
+                        <ul id="product-feature-list" class="m-1">
+                            <li class="text-sm">Features of the selected product will appear here.</li>
                         </ul>
                     </div>
 
                 </div>
 
                 <!-- Single product section -->
-                <div class="bg-sec rounded-b p-4 bg-opacity-20 flex">
-                    <div class="flex flex-col basis-96">
-                        <p class="font-bot text-xl text-black">ProductName</p>
-                        <image class="mt-2 rounded-md" alt="Image of the product"
-                            src="https://placekitten.com/g/500/500">
-                        </image>
+                <div id="product-container" class="hidden bg-sec rounded-b p-4 bg-opacity-20 flex flex-1">
+                    <div class="flex flex-col basis-50 flex-1">
+                        <p id="product-name" class="font-bot text-xl text-black">ProductName</p>
+                        <img id="product-image" class="mt-2 rounded-md object-fill h-56 w-full"
+                            alt="Image of the product">
+                        </img>
                     </div>
-                    <div class="flex flex-col mt-10 mx-3">
-
-                        <p class="text-sm flex-1">Information about the selected product.
-                            The text
-                            here
-                            is bit long.
-                            Something
-                            to say about the
-                            product for testing purposes.</p>
-
-
-                        <div class="bg-white rounded-2xl items-center py-1 px-3 my-2">
-                            <h1 class="text-xl text-center">
-                                <iconify-icon
-                                    style="color:#145C9E; font-size:16px; position:absolute; margin-left:-20px; margin-top:10px;"
-                                    icon="icomoon-free:price-tag"></iconify-icon>
-                                10.03€
+                    <div class="flex flex-col mt-10 mx-3 flex-1">
+                        <p id="product-description" class="text-sm flex-1"></p>
+                        <div class="bg-white rounded-2xl items-center py-1 px-4 my-3">
+                            <iconify-icon
+                                style="color:#145C9E; font-size:16px; position:absolute; margin-left:-20px; margin-top:10px;"
+                                icon="icomoon-free:price-tag"></iconify-icon>
+                            <h1 id="product-price" class="text-xl text-center">
+                                0.00€
                             </h1>
                         </div>
 
-                        <button
+                        <button id="btn-order-product"
                             class="hover:opacity-70 select-none rounded-2xl text-bot w-full font-bold py-1 px-3 bg-sec drop-shadow text-white">
                             Order
                         </button>
@@ -168,6 +171,9 @@
             </div>
         </div>
     </div>
+
+    <script src="src/models.js"></script>
+    <script src="src/script.js"></script>
 </body>
 
 </html>
