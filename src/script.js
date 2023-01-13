@@ -109,22 +109,29 @@ const setupShop = async () => {
     productName.innerText = product.title
     productImage.src = ShopAPI.baseUrl() + `/${product.image}`
     productDesc.innerText = product.description
-    productPrice.innerText = product.price + "€"
+    productPrice.innerText = formatEur(product.price)
   }
 }
 
 const refreshBalanceUI = () => {
-  txtWorkBalance.innerText = work.getBalance() + "€"
-  txtBankBalance.innerText = bank.getBalance() + "€"
+  txtWorkBalance.innerText = formatEur(work.getBalance())
+  txtBankBalance.innerText = formatEur(bank.getBalance())
 
   if (bank.hasOutStandingLoan()) {
-    txtLoanBalance.innerText = bank.getOutstandingLoan() + "€"
+    txtLoanBalance.innerText = formatEur(bank.getOutstandingLoan())
     containerLoanAmount.classList.remove("hidden")
     btnRepayLoan.classList.remove("hidden")
   } else {
     containerLoanAmount.classList.add("hidden")
     btnRepayLoan.classList.add("hidden")
   }
+}
+
+const formatEur = (num) => {
+  return new Intl.NumberFormat("fi-FI", {
+    style: "currency",
+    currency: "EUR",
+  }).format(num)
 }
 
 init()

@@ -1,20 +1,20 @@
 class Work {
-  #balance = (0).toFixed(2)
+  #balance = 0
 
   getBalance = () => this.#balance
 
   work = () => {
-    this.#balance = (parseFloat(this.#balance) + 100.0).toFixed(2)
+    this.#balance += 100
   }
 
   deductBalance = (amount) => {
-    this.#balance = (this.#balance - parseFloat(amount)).toFixed(2)
+    this.#balance -= amount
   }
 }
 
 class Bank {
-  #balance = (0).toFixed(2)
-  #loan = (0).toFixed(2)
+  #balance = 0
+  #loan = 0
 
   getBalance = () => this.#balance
 
@@ -22,15 +22,14 @@ class Bank {
    * Repays an outstanding loan up to 10% automatically if present.
    */
   deposit = (amount) => {
-    let amnt = parseFloat(amount)
-
     if (this.hasOutStandingLoan()) {
-      const payBackAmount = this.#calculatePaybackAmount(amnt)
-      this.#loan = (parseFloat(this.#loan) - payBackAmount).toFixed(2)
-      amnt = parseFloat(amnt) - payBackAmount
+      const payBackAmount = this.#calculatePaybackAmount(amount)
+      this.#loan -= payBackAmount
+      this.#addToBalance(amount - payBackAmount)
+      return
     }
 
-    this.#addToBalance(amnt)
+    this.#addToBalance(amount)
   }
 
   hasOutStandingLoan = () => this.#loan != 0
@@ -41,42 +40,40 @@ class Bank {
    * @returns boolean, whether the loan was granted.
    */
   requestLoan = (loanAmount) => {
-    const fAmount = parseFloat(loanAmount)
-    if (isNaN(fAmount)) {
+    loanAmount = parseFloat(loanAmount)
+    if (isNaN(loanAmount)) {
       return false
     }
     if (this.#loan > 0) {
       return false
     }
-    if (fAmount > this.#balance * 2) {
+    if (loanAmount > this.#balance * 2) {
       return false
     }
 
-    this.#addToBalance(fAmount)
-    this.#loan = fAmount.toFixed(2)
+    this.#addToBalance(loanAmount)
+    this.#loan = loanAmount
     return true
   }
 
   repayLoan = (amount) => {
-    const paidAmount = parseFloat(amount)
-
-    const leftOverAmount = paidAmount - parseFloat(this.#loan)
+    const leftOverAmount = amount - this.#loan
     if (leftOverAmount > 0) {
-      this.#loan = (0).toFixed(2)
+      this.#loan = 0
       this.#addToBalance(leftOverAmount)
       return
     }
 
     // Repay amount less than current loan, no balance updt
-    this.#loan = (parseFloat(this.#loan) - paidAmount).toFixed(2)
+    this.#loan -= amount
   }
 
   deductBalance = (amount) => {
-    this.#balance = (this.#balance - parseFloat(amount)).toFixed(2)
+    this.#balance -= amount
   }
 
   #calculatePaybackAmount = (fromAmount) => {
-    const max = (parseFloat(fromAmount) * 0.1).toFixed(2)
+    const max = fromAmount * 0.1
     if (max > this.#loan) {
       return this.#loan
     }
@@ -84,7 +81,7 @@ class Bank {
   }
 
   #addToBalance = (amount) => {
-    this.#balance = (parseFloat(this.#balance) + parseFloat(amount)).toFixed(2)
+    this.#balance += amount
   }
 }
 
